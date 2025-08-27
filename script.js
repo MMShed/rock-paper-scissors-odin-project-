@@ -17,7 +17,6 @@ function getComputerChoice ()
     }
 }
 
-console.log(getComputerChoice());
 
 /**
     1) prompt user for input (assume for now every entered choice is valid)
@@ -29,5 +28,7 @@ function getHumanChoice ()
     return choice;
 }
 
-console.log(getHumanChoice());
+let humanScore = 0;
+let computerScore = 0;
+
 
