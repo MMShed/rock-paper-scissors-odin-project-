@@ -17,3 +17,17 @@ function getComputerChoice ()
     }
 }
 
+console.log(getComputerChoice());
+
+/**
+    1) prompt user for input (assume for now every entered choice is valid)
+*/
+
+function getHumanChoice ()
+{
+    let choice = window.prompt();
+    return choice;
+}
+
+console.log(getHumanChoice());
+
