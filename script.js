@@ -28,81 +28,85 @@ function getHumanChoice ()
     return choice.toLowerCase();
 }
 
-let humanScore = 0;
-let computerScore = 0;
 
-/*
-    1) Take the choice made from both computer and human
-    2) Show in the console who made what choice, and whether you win or not
-    3) Show the scores after each round
-*/
-
-function playRound (humanChoice, computerChoice)
+function playGame () 
 {
-    console.log (`You chose ${humanChoice}. The computer chose ${computerChoice}.`);
+    let humanScore = 0;
+    let computerScore = 0;
 
-    if (humanChoice === "rock") 
+    /*
+        1) Take the choice made from both computer and human
+        2) Show in the console who made what choice, and whether you win or not
+        3) Show the scores after each round
+    */
+
+    function playRound (humanChoice, computerChoice)
     {
-        switch (computerChoice)
+        console.log (`You chose ${humanChoice}. The computer chose ${computerChoice}.`);
+
+        if (humanChoice == computerChoice)
         {
-            case "rock":
-                console.log ("It's a tie!");
-                break;
-            
-            case "paper":
-                console.log ("You win!");
-                humanScore++;
-                break;
-            
-            case "scissors":
-                console.log ("Computer wins!");
-                computerScore++;
-                break;
+            console.log ("It's a tie!")
         }
+        else if (humanChoice === "rock") 
+        {
+            switch (computerChoice)
+            {
+                
+                case "paper":
+                    console.log ("Computer wins!");
+                    computerScore++;
+                    break;
+                
+                case "scissors":
+                    console.log ("You win!");
+                    humanScore++;
+                    break;
+            }
+        }
+
+        else if (humanChoice === "paper") 
+        {
+            switch (computerChoice)
+            {
+                case "rock":
+                    console.log ("You win!");
+                    humanScore++;
+                    break;
+                
+                case "scissors":
+                    console.log ("Computer wins!");
+                    computerScore++;
+                    break;
+            }
+        }
+
+        else /*Scissors*/
+        {
+            switch (computerChoice)
+            {
+                case "rock":
+                    console.log ("Computer wins!");
+                    computerScore++;
+                    break;
+                
+                
+                case "scissors":
+                    console.log ("You win!");
+                    humanScore++;
+                    break;
+            }
+        }
+
+        console.log (`Human: ${humanScore}   Computer: ${computerScore}`)
     }
 
-    else if (humanChoice === "paper") 
+    for (let i = 0; i < 5; i++)
     {
-        switch (computerChoice)
-        {
-            case "rock":
-                console.log ("You win!");
-                humanScore++;
-                break;
-            
-            case "paper":
-                console.log ("It's a tie!");
-                break;
-            
-            case "scissors":
-                console.log ("Computer wins!");
-                computerScore++;
-                break;
-        }
+        playRound(getHumanChoice(), getComputerChoice());
     }
 
-    else /*Scissors*/
-    {
-        switch (computerChoice)
-        {
-            case "rock":
-                console.log ("Computer wins!");
-                computerScore++;
-                break;
-            
-            case "paper":
-                console.log ("It's a tie!");
-                break;
-            
-            case "scissors":
-                console.log ("You win!");
-                humanScore++;
-                break;
-        }
-    }
 
-    console.log (`Human: ${humanScore}   Computer: ${computerScore}`)
 }
 
-
-playRound(getHumanChoice(), getComputerChoice());
+playGame();
