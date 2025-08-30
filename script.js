@@ -18,21 +18,13 @@ function getComputerChoice ()
 }
 
 
-/**
-    1) prompt user for input (assume for now every entered choice is valid)
-*/
-
-function getHumanChoice ()
-{
-    let choice = window.prompt();
-    return choice.toLowerCase();
-}
-
 
 function playGame () 
 {
     let humanScore = 0;
     let computerScore = 0;
+
+    const buttons = document.querySelectorAll("button")
 
     /*
         1) Take the choice made from both computer and human
@@ -101,8 +93,17 @@ function playGame ()
         console.log (`Human: ${humanScore}   Computer: ${computerScore}`)
     }
 
-    
+    buttons.forEach ((btn) => 
+        {
+            btn.addEventListener("click", (e) => {
+                let choice = e.target.textContent.toLowerCase()
 
+                playRound (choice, getComputerChoice())
+            })
+        }
+    )
+    
+    
 
 }
 
