@@ -34,7 +34,13 @@ function playGame ()
 
     function playRound (humanChoice, computerChoice)
     {
-        console.log (`You chose ${humanChoice}. The computer chose ${computerChoice}.`);
+
+        let results = document.querySelector("#results")
+        let choiceDisplay = document.createElement("h2")
+
+        choiceDisplay.textContent = `You chose ${humanChoice}. The computer chose ${computerChoice}.`
+        
+        results.appendChild(choiceDisplay)
 
         if (humanChoice == computerChoice)
         {
